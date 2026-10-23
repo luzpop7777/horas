@@ -91,3 +91,25 @@ function sonidoTic(posicion) {
     nota(300 + posicion * 120, 0, 0.06, "square", 0.05);
   } catch (e) {}
 }
+function sonidoCoincidencia() {
+  if (!sonido.checked) return;
+  try {
+    [523.25, 659.25, 783.99, 1046.5, 1318.5].forEach((f, i) => nota(f, i * 0.11, 0.5));
+    nota(261.63, 0, 1.2, "sine", 0.15);
+  } catch (e) {}
+}
+
+function lanzarconfetti() {
+    const  colores = ["#ff9bd8", "#ffd166", "#ffffff", "#30cac0"];
+    for (let i = 0; i < 28; i++ ) {
+        const confetti = document.createElement("span");
+        const angulo = Math.random() * Math.PI * 2;
+        const distancia = numeroAleatorio(90, 260);
+        confetti.className = "confetti";
+        confetti.style.setProperty("--dx", `${Math.cos(angulo) * distancia}px`);
+        confetti.style.setProperty("--dy", `${Math.sin(angulo) * distancia}px`);
+        confetti.style.setProperty("--color", colores[numeroaleatorio(0, colores.length)]);
+        confetti.addEventListener("animationend", () => confetti.remove());
+        efectos.appendChild(confetti);
+    }
+}
