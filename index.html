@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Reloj bestiario</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Barriecito&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="estilo.css" />
+
+    </head>
+    <body>
+
+        <div id="contenedorgeneral">
+            <h1 id="titulo">La hora de tu suerte</h1>
+            <h2>Si la hora que te sale es de tres números iguales, te diré tu futuro</h2>
+            <div id="reloj">
+                <div id="efectos"></div>
+                <img class="digito" id="hora" alt="" />
+                <span id="separador"></span>
+                <img class="digito" id="mindecena" alt="" />
+                <img class="digito" id="minunidad" alt="" />
+
+            </div>
+            <p id="mensaje" aria-live="polite">Espicha Randomizar para que te de una hora</p>
+            <button id="boton">Randomizar</button>
+            <label id="etiquetasonido"><imput type="checkbox" id="sonido" checked />Sonido/></label>
+            <section id="lectura">
+            <h2>Tu futuro</h2>
+            <ul id="listafuturo"></ul>
+            <p id="lecturatexto"></p>
+            </section>
+        </div>
+
+        <script src="script.js"></script>
+    </body>
+</html>
