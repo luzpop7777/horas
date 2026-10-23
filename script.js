@@ -43,3 +43,45 @@ function ponerdigito(elemento, numero) {
   elemento.src = listadigitos[numero];
   elemento.alt = numero;
 }
+
+function generarhora() {
+  if (Math.random() < PROBABILIDAD_COINCIDENCIA) {
+    const repetida = numeroaleatorio(1, 6);
+    horaaleatoria = repetida;
+    decenaaleatoria = repetida;
+    unidadaleatoria = repetida; 
+  } else  {
+    horaaleatoria = numeroaleatorio(1, 10); //supuestamente de 1 a 9
+    const minutos = numeroaleatorio(0, 60); // a ver si es 0 a 59
+    decenaaleatoria = Math.floor(minutos / 10);
+    unidadaleatoria = minutos % 10;
+  }
+  return [horaaleatoria, decenaaleatoria, unidadaleatoria];
+}
+
+function contextoaudio() {
+    if (!audio) {
+        audio = new (window.AudioContext || window.webkitAudioContext)();)
+    }
+    if  (audio.state === "suspended") {
+        audio.resume();
+    }
+    return audio;
+}
+function nota(frecuencia, inicio, duracion, tipo = "triangle", volumen = 0.2) {
+  const ctx = contextoAudio();
+  const osc = ctx.createOscillator();
+  const ganancia = ctx.createGain();
+  const t = ctx.currentTime + inicio;
+
+  osc.type = tipo;
+  osc.frequency.value = frecuencia;
+  ganancia.gain.setValueAtTime(0.0001, t);
+  ganancia.gain.exponentialRampToValueAtTime(volumen, t + 0.02);
+  ganancia.gain.exponentialRampToValueAtTime(0.0001, t + duracion);
+
+  osc.connect(ganancia);
+  ganancia.connect(ctx.destination);
+  osc.start(t);
+  osc.stop(t + duracion + 0.05);
+}
