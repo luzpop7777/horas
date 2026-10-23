@@ -85,3 +85,9 @@ function nota(frecuencia, inicio, duracion, tipo = "triangle", volumen = 0.2) {
   osc.start(t);
   osc.stop(t + duracion + 0.05);
 }
+function sonidoTic(posicion) {
+  if (!sonido.checked) return;
+  try {
+    nota(300 + posicion * 120, 0, 0.06, "square", 0.05);
+  } catch (e) {}
+}
