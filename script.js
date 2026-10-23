@@ -34,3 +34,12 @@ let girando = false;
 let audio = null;
 
 const PROBABILIDAD_COINCIDENCIA = 0.15;
+
+function numeroaleatorio(min, max) {
+  return Math.floor(Math.random() * (max - min) + min);
+}
+
+function ponerdigito(elemento, numero) {
+  elemento.src = listadigitos[numero];
+  elemento.alt = numero;
+}
